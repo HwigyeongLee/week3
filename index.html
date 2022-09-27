@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Egg Boil Timer</title>
+	<style type="text/css">
+		body{background: white;
+			 font-family: "Roboto Mono", monospace;
+		     font-size: 18px;
+		     color: black;
+		     text-align: center;
+		    }
+		img{width: 500px;
+		    display: block;
+		    margin:  auto;
+		    margin-top: 100px;
+		    margin-bottom: 10px;}
+		div{text-align: center;}
+		button{width: 70px; 
+			   height: 30px; 
+			   margin-right: 3px;
+			   border-color: black;
+			   border-radius: 100px;
+			   background: black;
+			   color: black;
+			   font-family: "Roboto Mono", monospace;
+		       font-size: 18px;
+		       }
+		h1{font-size: 20px;}
+	</style>
+</head>
+<body>
+		<div id= "container">
+	<h1>Let's make a perfect boiled egg!</h1> 
+		<img id="boilingStage" src="beforeboiling.jpg">
+		<p id="boilingTime"></p>
+	<div>
+	<button id="startTimer">START</button>
+	<button id="stopTimer">STOP</button>
+	</div>
+	<audio id="boilingSound" src="boilingSound.mp3"></audio>
+
+	</div>
+	
+	<script type="text/javascript">
+
+	var myTimer = setInterval(myFunction, 1000);
+
+		var a = 0;
+		function myFunction(){
+			var time = new Date();
+			var t = time.getTime();
+			t = t - 1664289090000;
+			a= a+1;
+		}
+		
+
+		startTimer.onclick = function(){
+			boilingSound.play();
+			document.getElementById("boilingStage").src="startBoiling.jpg";	
+		
+		document.getElementById("boilingTime").innerHTML = a + "m";
+		}
+         
+
+		stopTimer.onclick = function(){
+			boilingSound.pause();
+			
+			if(a <= 8){
+				
+				document.getElementById("boilingStage").src="runnyYolk.jpg";
+				alert("It's too soft and liquidy!");
+				clearInterval(myTimer);
+			}
+			else if(8 < a <10){
+				
+				document.getElementById("boilingStage").src="mediumcook.jpg";
+				alert("What a perfect creamy golden yolk!");
+				clearInterval(myTimer);
+			}
+			else if(10 <= a){
+				
+				document.getElementById("boilingStage").src="hardboiled.jpg";
+				alert("It's way too hard-boiled.");
+				clearInterval(myTimer);
+			}}
+		
+</script>
+</body>
+</html>
